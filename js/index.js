@@ -24,10 +24,6 @@ var notesToDraw = new Array(); // Le tableau des notes à dessiner
 var correctAnswers = new Array(); // le tableau des réponses (correctes/incorrectes)
 
 $(document).ready(function () {
-    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    // createNotes();
-    // listenButtons();
-    // listenKeys();
     choseOptions();
 });
 
@@ -94,23 +90,6 @@ function drawNotes(note, k){
 function getFloorRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
-/*
-function step(timestamp) {
-    console.log(d);
-    var progress;
-    if (start === null) start = timestamp;
-    progress = timestamp - start;
-    console.log(progress + "/"+ timestamp+"/"+start);
-    //d.css("left", Math.min(progress/10, 200) + "px");
-    // d.css("left", 0-(progress/50) + "px");
-
-    if (progress < 100000) {
-        requestAnimationFrame(step);
-    }
-}
-
-requestAnimationFrame(step);
-*/
 
 function listenButtons(){
     $(".note-btn").each(function(i){
@@ -241,9 +220,18 @@ function getScore(){
 
 // Renvoyer le score du joueur à la fin
 function getFinalScore(){
-    var tc, tw; // temps réponses correctes, temps réponses incorrectes
+    var tc, tw = 0; // temps réponses correctes, temps réponses incorrectes
+    var totalTime = 0;
+    var totalTimeCorrect;
     result = score*100/exerciseLength;
 
-    console.log(result+"% / "+score+" bonnes réponses.");
+    for(var i = 1; i < inputDuration.length; i++){
+        totalTime += inputDuration[i];
+        // console.log(inputDuration[i]);
+    }
+    tc = (totalTime/(inputDuration.length - 1))/10;
     $(".position").css("display", "none");
+
+    console.log("temps de réponse moyen : "+tc+" secondes");
+    console.log(result+"% / "+score+" bonnes réponses.");
 }
