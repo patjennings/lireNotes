@@ -2,9 +2,10 @@ var start = null;
 var d;
 
 // Variables exposées
-var key = "sol";
-var exerciseLength = 80;
+var key;
+var exerciseLength;
 
+var durees = [20,40,80]; // les trois durées disponibles
 var notes = ["a", "b", "c", "d", "e", "f", "g"];
 var notesFr = ["La", "Si", "Do", "Ré", "Mi", "Fa", "Sol"];
 var octaves = [0, 1, 2, 3, 4, 5];
@@ -14,14 +15,51 @@ var score = 0;
 var lineHeight = 6;
 var offset = 104;
 
+var interval;
+
+var duration = 0;
+
+var inputDuration = new Array(); // le tableau du temps mis pour répondre
 var notesToDraw = new Array(); // Le tableau des notes à dessiner
+var correctAnswers = new Array(); // le tableau des réponses (correctes/incorrectes)
 
 $(document).ready(function () {
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    createNotes();
-    listenButtons();
-    listenKeys();
+    // createNotes();
+    // listenButtons();
+    // listenKeys();
+    choseOptions();
 });
+
+function reset(){
+    // enlever les notes, kill les écouteurs
+}
+
+function getTime(){
+    duration++;
+    console.log(correctAnswers+" / "+inputDuration);
+}
+
+function captureTime(){
+    inputDuration.push(duration);
+    duration = 0;
+}
+
+function choseOptions(){
+    var k, l;
+    $("#modal-validate").click(function(){
+        k = $("#choix-clef").val();
+        key = k;
+        l = $("#choix-duree").val();
+        exerciseLength = durees[l];
+
+        createNotes();
+        listenButtons();
+        listenKeys();
+
+        $(".overlay").addClass("hidden");
+    });
+}
 
 // créer le tableau de notes
 function createNotes(){
@@ -142,15 +180,22 @@ function clearActive(t){
 }
 
 function sendNote(){
+    if(position == 0){
+        interval = setInterval("getTime()", 100);
+        inputDuration.push(0); // On démarre le chrono, et la première valeur est zéro (on l'enlèvera du décompte final)
+    }
+    else{
+        captureTime();
+    }
     controlInput(proposedNote);
 
     if(position < notesToDraw.length-1){ // Si ce n'est pas fini
-
         position++;
         getScore();
     }
     else{ // Si c'est terminé
         console.log("terminé");
+        clearInterval(interval);
         getFinalScore();
     }
     movePositionForward();
@@ -175,18 +220,17 @@ function controlInput(){
     if(proposedNote == notesToDraw[position]){
         // console.log("Correct");
         answerIs = "correct";
+        currentNote.append("<div class='correct-note'>check</div>");
         score++;
     }
     else {
         // console.log("Faux, c'est un "+notesToDraw[position]);
         answerIs = "wrong";
-        currentNote.append("<div class='correct-note'>"+convertNotesToFr(notesToDraw[position])+"</div>")
+        currentNote.append("<div class='correct-note'>"+convertNotesToFr(notesToDraw[position])+"</div>");
     }
-    currentNote.addClass(answerIs);
-}
 
-function setKeyTransparent(){
-    $(".notes")
+    correctAnswers.push(answerIs); // On pushe l'answer dans le tableau des réponses
+    currentNote.addClass(answerIs);
 }
 
 // Renvoyer l'évolution du score du joueur
@@ -197,7 +241,9 @@ function getScore(){
 
 // Renvoyer le score du joueur à la fin
 function getFinalScore(){
+    var tc, tw; // temps réponses correctes, temps réponses incorrectes
     result = score*100/exerciseLength;
+
     console.log(result+"% / "+score+" bonnes réponses.");
     $(".position").css("display", "none");
 }

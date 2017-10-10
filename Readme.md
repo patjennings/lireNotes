@@ -5,10 +5,11 @@
 - [ ] Nom de la note qui s'envole de la note et disparait
 - [ ] Erreurs signalées par un point rouge sous la note
 - [ ] note à l'envers quand trop haute
-- [ ] Choix de la clef au départ (modale)
 - [ ] Affichage du résultat + recommencer
+- [ ] Calcul du temps entre chaque input
 
 ## Done
+- [x] Choix de la clef au départ (modale)
 - [x] Pouvoir cliquer à la souris
 - [x] Boutons réactifs
 - [x] taille de portée dynamique (w/ \_variables.scss)
