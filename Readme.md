@@ -1,5 +1,5 @@
 # Lire notes
-…est un jeu pour apprendre à lire les notes :smile: L'exercice est proposé en clef de sol ou en clef de fa.
+…est un jeu pour apprendre à lire les notes :smile:. L'exercice est proposé en clef de sol ou en clef de fa.
 
 ## To-do
 - [ ] Nom de la note qui s'envole de la note et disparait
