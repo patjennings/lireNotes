@@ -6,7 +6,6 @@
 - [ ] Erreurs signalées par un point rouge sous la note
 - [ ] note à l'envers quand trop haute
 - [ ] Affichage du résultat + recommencer
-- [ ] Calcul du temps entre chaque input
 
 ## Done
 - [x] Choix de la clef au départ (modale)
@@ -15,6 +14,7 @@
 - [x] taille de portée dynamique (w/ \_variables.scss)
 - [x] clefs en début de portée
 - [x] Lignes sous/sur les notes hors de la portée
+- [x] Calcul du temps mis pour donner une réponse
 
 ## v2
 - Clef de sol et de fa en même temps
