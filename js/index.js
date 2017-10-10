@@ -6,6 +6,7 @@ var key = "sol";
 var exerciseLength = 80;
 
 var notes = ["a", "b", "c", "d", "e", "f", "g"];
+var notesFr = ["La", "Si", "Do", "Ré", "Mi", "Fa", "Sol"];
 var octaves = [0, 1, 2, 3, 4, 5];
 var proposedNote;
 var position = 0;
@@ -128,6 +129,14 @@ function setButtonActive(){
     });
 }
 
+function convertNotesToFr(noteToConvert){
+    for(i = 0; i<notes.length; i++){
+        if(noteToConvert == notes[i]){
+            return notesFr[i];
+        }
+    }
+}
+
 function clearActive(t){
     t.removeClass('active');
 }
@@ -150,8 +159,6 @@ function sendNote(){
 // Avancer la tête de lecture
 function movePositionForward(){
     var newPos = position*52;
-    // $(".position").css("left", newPos+"px");
-    // $(".portee").css("left", (0-newPos)+"px");
 
     $(".notes").animate({
         left: (offset+0-newPos)
@@ -163,17 +170,19 @@ function movePositionForward(){
 // Contrôler si le résultat entré est le bon
 function controlInput(){
     var answerIs;
+    var currentNote = $(".notes").find(".note").eq(position);
 
     if(proposedNote == notesToDraw[position]){
-        console.log("Correct");
+        // console.log("Correct");
         answerIs = "correct";
         score++;
     }
     else {
-        console.log("Faux, c'est un "+notesToDraw[position]);
+        // console.log("Faux, c'est un "+notesToDraw[position]);
         answerIs = "wrong";
+        currentNote.append("<div class='correct-note'>"+convertNotesToFr(notesToDraw[position])+"</div>")
     }
-    $(".notes").find(".note").eq(position).addClass(answerIs);
+    currentNote.addClass(answerIs);
 }
 
 function setKeyTransparent(){
