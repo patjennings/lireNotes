@@ -5,7 +5,7 @@ var d;
 var key;
 var exerciseLength;
 
-var durees = [20,40,80]; // les trois durées disponibles
+var durees = [5,40,80]; // les trois durées disponibles
 var notes = ["a", "b", "c", "d", "e", "f", "g"];
 var notesFr = ["La", "Si", "Do", "Ré", "Mi", "Fa", "Sol"];
 var octaves = [0, 1, 2, 3, 4, 5];
@@ -14,26 +14,46 @@ var position = 0;
 var score = 0;
 var lineHeight = 6;
 var offset = 104;
-
 var interval;
-
 var duration = 0;
 
-var inputDuration = new Array(); // le tableau du temps mis pour répondre
 var notesToDraw = new Array(); // Le tableau des notes à dessiner
-var correctAnswers = new Array(); // le tableau des réponses (correctes/incorrectes)
+var inputDuration = new Array(); // le tableau du temps mis pour répondre
+var answersType = new Array(); // le tableau des réponses (correctes/incorrectes)
 
 $(document).ready(function () {
     choseOptions();
+    $(".overlay #modal-results").hide();
 });
 
 function reset(){
-    // enlever les notes, kill les écouteurs
+    console.log("reset");
+    console.log(notesToDraw);
+    $(".overlay #modal-results").hide();
+    $(".overlay #modal-choice").show();
+    $(".notes").empty().css("left", offset);
+    $(".position").show();
+
+    position = 0;
+    score = 0;
+    notesToDraw = [];
+    inputDuration = [];
+    answersType = [];
+    // choseOptions();
+    // console.log(notesToDraw);
+}
+
+function killListeners(){
+    // kill les écouteurs clavier / souris
+    console.log("listeners killed");
+    $("body").off("keydown");
+    $(".note-btn").each(function(){
+        $(this).off("click");
+    })
 }
 
 function getTime(){
     duration++;
-    console.log(correctAnswers+" / "+inputDuration);
 }
 
 function captureTime(){
@@ -104,7 +124,7 @@ function listenButtons(){
 
 // Ecouter les touches du clavier
 function listenKeys(){
-	$("body").keydown(function( event ) {
+	$("body").keydown(function(event) {
         event.preventDefault();
 
 		if ( event.keyCode == 65 ) { // touche A
@@ -173,8 +193,8 @@ function sendNote(){
         getScore();
     }
     else{ // Si c'est terminé
-        console.log("terminé");
         clearInterval(interval);
+        killListeners();
         getFinalScore();
     }
     movePositionForward();
@@ -208,30 +228,64 @@ function controlInput(){
         currentNote.append("<div class='correct-note'>"+convertNotesToFr(notesToDraw[position])+"</div>");
     }
 
-    correctAnswers.push(answerIs); // On pushe l'answer dans le tableau des réponses
+    answersType.push(answerIs); // On pushe l'answer dans le tableau des réponses
     currentNote.addClass(answerIs);
 }
 
 // Renvoyer l'évolution du score du joueur
 function getScore(){
     result = score*100/position;
-    console.log("Evolution : "+result+"% / "+score+" bonnes réponses.");
+    //console.log("Evolution : "+result+"% / "+score+" bonnes réponses.");
 }
 
 // Renvoyer le score du joueur à la fin
 function getFinalScore(){
-    var tc, tw = 0; // temps réponses correctes, temps réponses incorrectes
+    var tt, tc = 0; // temps réponses correctes, temps réponses total
     var totalTime = 0;
-    var totalTimeCorrect;
-    result = score*100/exerciseLength;
+    var totalTimeCorrect = 0;
+    var totalCorrectAnswers = 0;
 
     for(var i = 1; i < inputDuration.length; i++){
         totalTime += inputDuration[i];
-        // console.log(inputDuration[i]);
+        if(answersType[i] == "correct"){
+            totalTimeCorrect += inputDuration[i];
+            totalCorrectAnswers++;
+        }
     }
-    tc = (totalTime/(inputDuration.length - 1))/10;
-    $(".position").css("display", "none");
+    tt = (totalTime/(inputDuration.length - 1))/10;
+    tc = (totalTimeCorrect/(totalCorrectAnswers))/10;
+    result = score*100/exerciseLength;
 
-    console.log("temps de réponse moyen : "+tc+" secondes");
-    console.log(result+"% / "+score+" bonnes réponses.");
+    $(".position").hide();
+
+    console.log("temps de réponse moyen : "+tt+" secondes");
+    console.log("temps des réponses correctes : "+tc+" secondes");
+    console.log("Pourcentage de bonnes réponses : "+result+"%");
+    console.log("Bonnes réponses : "+score);
+
+    displayResultsBox(result, score, tc, tt);
+}
+
+function displayResultsBox(s, c, tc, tt){
+    // results + cliquer pour cleaner notes + afficher setup;
+
+    $(".overlay").removeClass("hidden");
+    $(".overlay #modal-choice").hide();
+
+    $(".overlay #modal-results").show();
+    $("#modal-results .score").empty().append(roundWithPrecision(s, 2)+"%");
+    $("#modal-results .answers-correct").empty().append(roundWithPrecision(c, 2)+" bonnes réponses");
+    $("#modal-results .time-correct").empty().append(roundWithPrecision(tc, 2)+"s. aux bonnes réponses");
+    $("#modal-results .time-total").empty().append(roundWithPrecision(tt, 2)+"s. pour toutes les réponses");
+
+    $("#modal-reset").click(function(){
+        reset();
+    });
+}
+
+function roundWithPrecision(number, precision){
+    var factor = Math.pow(10, precision);
+    var tempNumber = number * factor;
+    var roundedTempNumber = Math.round(tempNumber);
+    return roundedTempNumber / factor;
 }

@@ -5,7 +5,7 @@
 - [ ] Nom de la note qui s'envole de la note et disparait
 - [ ] Erreurs signalées par un point rouge sous la note
 - [ ] note à l'envers quand trop haute
-- [ ] Affichage du résultat + recommencer
+
 
 ## Done
 - [x] Choix de la clef au départ (modale)
@@ -15,6 +15,7 @@
 - [x] clefs en début de portée
 - [x] Lignes sous/sur les notes hors de la portée
 - [x] Calcul du temps mis pour donner une réponse
+- [x] Affichage du résultat + recommencer
 
 ## v2
 - Clef de sol et de fa en même temps
