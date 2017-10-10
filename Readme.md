@@ -1,17 +1,16 @@
 ## To-do
-
-- Nom de la note qui s'envole de la note et disparait
-- Erreurs signalées par un point rouge sous la note
-- note à l'envers quand trop haute
-- Choix de la clef au départ (modale)
-- Affichage du résultat + recommencer
-
-## v2
-- Clef d'ut et de sol en même temps
+- [ ] Nom de la note qui s'envole de la note et disparait
+- [ ] Erreurs signalées par un point rouge sous la note
+- [ ] note à l'envers quand trop haute
+- [ ] Choix de la clef au départ (modale)
+- [ ] Affichage du résultat + recommencer
 
 ## Done
-- Pouvoir cliquer à la souris
-- Boutons réactifs
-- taille de portée dynamique (w/ \_variables.scss)
-- clefs en début de portée
-- Lignes sous/sur les notes hors de la portée
+- [x] Pouvoir cliquer à la souris
+- [x] Boutons réactifs
+- [x] taille de portée dynamique (w/ \_variables.scss)
+- [x] clefs en début de portée
+- [x] Lignes sous/sur les notes hors de la portée
+
+## v2
+- Clef de sol et de fa en même temps
