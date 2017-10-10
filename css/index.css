@@ -1,0 +1,220 @@
+html, body {
+  margin: 0;
+  padding: 0; }
+
+.wrapper {
+  width: 8000px;
+  padding: 24px;
+  margin-top: 64px; }
+  .wrapper .portee {
+    position: relative; }
+    .wrapper .portee .lines {
+      position: relative;
+      z-index: 10; }
+      .wrapper .portee .lines .line {
+        width: 100%;
+        height: 1px;
+        background: black;
+        margin-bottom: 11px; }
+        .wrapper .portee .lines .line.outside {
+          background: #EFEFEF;
+          opacity: 0; }
+    .wrapper .portee .elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      background: white;
+      width: 72px;
+      height: 180px; }
+      .wrapper .portee .elements .key {
+        position: relative;
+        width: 46px;
+        height: 90px;
+        background: black; }
+    .wrapper .portee .notes {
+      position: absolute;
+      top: 0;
+      left: 104px;
+      display: flex;
+      flex-direction: row;
+      padding-left: 72px;
+      z-index: 8; }
+      .wrapper .portee .notes .note {
+        width: 28px;
+        height: 42px;
+        background: url(../assets/note.svg) no-repeat;
+        background-size: 100%;
+        position: relative;
+        margin-right: 24px; }
+        .wrapper .portee .notes .note.b {
+          top: -36px; }
+        .wrapper .portee .notes .note.a {
+          top: -30px; }
+        .wrapper .portee .notes .note.g {
+          top: -24px; }
+        .wrapper .portee .notes .note.f {
+          top: -18px; }
+        .wrapper .portee .notes .note.e {
+          top: -12px; }
+        .wrapper .portee .notes .note.d {
+          top: -6px; }
+        .wrapper .portee .notes .note.c {
+          top: 0px; }
+        .wrapper .portee .notes .note.gr5 {
+          margin-top: 0; }
+        .wrapper .portee .notes .note.gr4 {
+          margin-top: 42px; }
+        .wrapper .portee .notes .note.gr3 {
+          margin-top: 84px; }
+        .wrapper .portee .notes .note.gr2 {
+          margin-top: 126px; }
+        .wrapper .portee .notes .note.gr1 {
+          margin-top: 168px; }
+        .wrapper .portee .notes .note.gr0 {
+          margin-top: 210px; }
+    .wrapper .portee .position {
+      position: absolute;
+      border-top: 2px solid red;
+      top: 0;
+      margin-left: 72px;
+      left: 104px;
+      width: 24px;
+      height: 100%;
+      background: rgba(255, 0, 0, 0.25); }
+  .wrapper #portee-sol .notes {
+    top: 0; }
+    .wrapper #portee-sol .notes .b.gr5 {
+      background: url(../assets/note_up_8.svg) no-repeat;
+      width: 28px;
+      height: 85px;
+      top: -36px; }
+    .wrapper #portee-sol .notes .a.gr5 {
+      background: url(../assets/note_up_7.svg) no-repeat;
+      width: 28px;
+      height: 79px;
+      top: -30px; }
+    .wrapper #portee-sol .notes .g.gr5 {
+      background: url(../assets/note_up_6.svg) no-repeat;
+      width: 28px;
+      height: 73px;
+      top: -24px; }
+    .wrapper #portee-sol .notes .f.gr5 {
+      background: url(../assets/note_up_5.svg) no-repeat;
+      width: 28px;
+      height: 67px;
+      top: -18px; }
+    .wrapper #portee-sol .notes .e.gr5 {
+      background: url(../assets/note_up_4.svg) no-repeat;
+      width: 28px;
+      height: 61px;
+      top: -12px; }
+    .wrapper #portee-sol .notes .d.gr5 {
+      background: url(../assets/note_up_3.svg) no-repeat;
+      width: 28px;
+      height: 55px;
+      top: -6px; }
+    .wrapper #portee-sol .notes .c.gr5 {
+      background: url(../assets/note_up_2.svg) no-repeat;
+      width: 28px;
+      height: 49px;
+      top: 0; }
+    .wrapper #portee-sol .notes .b.gr4 {
+      background: url(../assets/note_up_1.svg) no-repeat;
+      width: 28px;
+      height: 43px;
+      top: -36px; }
+    .wrapper #portee-sol .notes .a.gr4 {
+      background: url(../assets/note_up_0.svg) no-repeat;
+      width: 28px;
+      top: -30px; }
+    .wrapper #portee-sol .notes .c.gr3 {
+      background: url(../assets/note_down_1.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .b.gr2 {
+      background: url(../assets/note_down_2.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .a.gr2 {
+      background: url(../assets/note_down_3.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .g.gr2 {
+      background: url(../assets/note_down_4.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .f.gr2 {
+      background: url(../assets/note_down_5.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .e.gr2 {
+      background: url(../assets/note_down_6.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .d.gr2 {
+      background: url(../assets/note_down_7.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-sol .notes .c.gr2 {
+      background: url(../assets/note_down_8.svg) no-repeat;
+      width: 28px;
+      height: 48px;
+      top: -6px; }
+  .wrapper #portee-sol .elements .key {
+    top: 43px;
+    left: 8px;
+    background: url(../assets/sol_key.svg) no-repeat;
+    background-size: 70%; }
+  .wrapper #portee-fa .notes {
+    top: -114px; }
+    .wrapper #portee-fa .notes .b.gr2 {
+      background: url(../assets/note_up_6.svg) no-repeat;
+      width: 28px;
+      height: 79px; }
+    .wrapper #portee-fa .notes .a.gr2 {
+      background: url(../assets/note_up_5.svg) no-repeat;
+      width: 28px;
+      height: 73px; }
+    .wrapper #portee-fa .notes .g.gr2 {
+      background: url(../assets/note_up_4.svg) no-repeat;
+      width: 28px;
+      height: 67px; }
+    .wrapper #portee-fa .notes .f.gr2 {
+      background: url(../assets/note_up_3.svg) no-repeat;
+      width: 28px;
+      height: 61px; }
+    .wrapper #portee-fa .notes .e.gr2 {
+      background: url(../assets/note_up_2.svg) no-repeat;
+      width: 28px;
+      height: 55px; }
+    .wrapper #portee-fa .notes .d.gr2 {
+      background: url(../assets/note_up_1.svg) no-repeat;
+      width: 28px;
+      height: 49px; }
+    .wrapper #portee-fa .notes .c.gr2 {
+      background: url(../assets/note_up_0.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-fa .notes .e.gr0 {
+      background: url(../assets/note_down_1.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-fa .notes .d.gr0 {
+      background: url(../assets/note_down_2.svg) no-repeat;
+      width: 28px; }
+    .wrapper #portee-fa .notes .c.gr0 {
+      background: url(../assets/note_down_3.svg) no-repeat;
+      width: 28px; }
+  .wrapper #portee-fa .elements .key {
+    top: 60px;
+    left: 8px;
+    background: url(../assets/fa_key.svg) no-repeat;
+    background-size: 70%; }
+  .wrapper .notes-btn {
+    background: white;
+    border: 1px solid #EEE;
+    padding: 12px;
+    display: flex;
+    flex-direction: row; }
+    .wrapper .notes-btn .note-btn {
+      background: white;
+      border: 1px solid #EEE;
+      padding: 12px;
+      margin-right: 6px;
+      cursor: pointer; }
+      .wrapper .notes-btn .note-btn.active {
+        border: 1px solid blue; }
+
+/*# sourceMappingURL=index.css.map */
