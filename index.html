@@ -17,6 +17,14 @@
     <div class="container">
 		<div class="container-inner">
                 <div class="wrapper">
+                    <div class="row wrapper--header">
+                        <div class="col-8">
+                            <h1 class="title">Lire notes</h1>
+                            <p class="description">
+                            <em>LireNotes</em> est un jeu qui aide à lire les notes de musique d'une portée
+                            </p>
+                        </div>
+                    </div>
                     <div class="portee" id="portee-sol">
                         <div class="lines">
                             <div class="line outside"></div>
@@ -42,13 +50,13 @@
                         <div class="position"></div>
                     </div>
                     <div class="notes-btn">
-                        <div class="note-btn c">Do</div>
-                        <div class="note-btn d">Ré</div>
-                        <div class="note-btn e">Mi</div>
-                        <div class="note-btn f">Fa</div>
-                        <div class="note-btn g">Sol</div>
-                        <div class="note-btn a">La</div>
-                        <div class="note-btn b">Si</div>
+                        <div class="note-btn c">Do<div class="note-key">A</div></div>
+                        <div class="note-btn d">Ré<div class="note-key">Z</div></div>
+                        <div class="note-btn e">Mi<div class="note-key">E</div></div>
+                        <div class="note-btn f">Fa<div class="note-key">R</div></div>
+                        <div class="note-btn g">Sol<div class="note-key">T</div></div>
+                        <div class="note-btn a">La<div class="note-key">Y</div></div>
+                        <div class="note-btn b">Si<div class="note-key">U</div></div>
                     </div>
                 </div>
                 <div class="overlay">
@@ -85,7 +93,15 @@
                     <div class="modal" id="modal-results">
                         <div class="row title">
                             <div class="col-8">
-                                <h1>C'est terminé !</h1>
+                                <h1>Terminé !</h1>
+                            </div>
+                        </div>
+                        <div class="row column-id">
+                            <div class="col-4">
+                                <h3>Score</h3>
+                            </div>
+                            <div class="col-4">
+                                <h3>Rapidité</h3>
                             </div>
                         </div>
                         <div class="row">
