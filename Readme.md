@@ -5,7 +5,6 @@ https://patjennings.github.io/lireNotes/
 ## To-do
 - [ ] note à l'envers quand trop haute
 
-
 ## Done
 - [x] Choix de la clef au départ (modale)
 - [x] Pouvoir cliquer à la souris
