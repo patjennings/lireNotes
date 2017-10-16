@@ -1,5 +1,6 @@
 # Lire notes
 …est un jeu pour apprendre à lire les notes :smile:. L'exercice est proposé en clef de sol ou en clef de fa.
+https://patjennings.github.io/lireNotes/
 
 ## To-do
 - [ ] note à l'envers quand trop haute
