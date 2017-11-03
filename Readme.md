@@ -18,14 +18,3 @@ https://patjennings.github.io/lireNotes/
 
 ## v2
 - Clef de sol et de fa en même temps
-
-
-## Phrases
-### score
-< 70 : "Continuez !"
-70-95 : "C'est bien, continuez l'entrainement"
-95 - 100 : "Vous y êtes presque"
-100 - "C'est parfait !"
-### Rapidité
-\> 4 sec. "Ouille… C’est  plutôt lent."
-< 4 sec. note = {tempo}
