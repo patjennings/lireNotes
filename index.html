@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" type="text/css" href="public/css/all.css" />
-
+        <link rel="stylesheet" type="text/css" href="vendor/css/jquery.growl.css" />
     </head>
     <body>
     <!--[if lt IE 8]>
@@ -83,6 +83,35 @@
                                     <option value="2">Long (80 notes)</option>
                                 </select>
                             </div>
+                            <h3>Choisissez les notes</h3>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-c">Do</label>
+                                <input class="choix" id="note-c" name="C" type="checkbox" value="2" checked></input>
+                            </div>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-d">Ré</label>
+                                <input class="choix" id="note-d" name="D" type="checkbox" value="3" checked></input>
+                            </div>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-e">Mi</label>
+                                <input class="choix" id="note-e" name="E" type="checkbox" value="4" checked></input>
+                            </div>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-f">Fa</label>
+                                <input class="choix" id="note-f" name="F" type="checkbox" value="5" checked></input>
+                            </div>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-g">Sol</label>
+                                <input class="choix" id="note-g" name="G" type="checkbox" value="6" checked></input>
+                            </div>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-a">La</label>
+                                <input class="choix" id="note-a" name="A" type="checkbox" value="0" checked></input>
+                            </div>
+                            <div class="form--wrapper form--checkbox">
+                                <label for="note-b">Si</label>
+                                <input class="choix" id="note-b" name="B" type="checkbox" value="1" checked></input>
+                            </div>
                             <div class="modal-input">
                                 <button class="choix-submit btn validate big" type="submit" id="modal-validate">Lancer</button>
                             </div>
@@ -144,6 +173,7 @@
                 </div>
 
                 <script type="text/javascript" src="vendor/js/jquery.js"></script>
+                <script type="text/javascript" src="vendor/js/jquery.growl.js"></script>
                 <script type="text/javascript" src="public/js/all.min.js"></script>
             </div>
         </div>
